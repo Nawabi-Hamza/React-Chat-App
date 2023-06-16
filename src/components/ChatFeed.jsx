@@ -41,13 +41,19 @@ const ChatFeed  = (props)=>{
 
         })
     }
+    const handleLogout = (e)=>{
+        e.preventDefault()
+        localStorage.clear()
+        window.location.reload()
+    }
     // renderMessage()
     if(!chat) return "Loading..." ;
     return(
         <div className="chat-feed">
             <div className="chat-title-container">
                 <div className="chat-title">
-                    {chat?.title}
+                    {chat?.title} 
+                    <button className="ce-primary-button" style={{padding:"10px",float:"right",color:'white',cursor:'pointer'}} onClick={handleLogout}>Logout</button>
                 </div>
                 <div className="chat-subtitle">
                     {chat.people.map((person)=> ` ${person.person.username}`)}
